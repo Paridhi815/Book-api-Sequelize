@@ -21,4 +21,10 @@ describe('Testing The server:', () => {
       done();
     });
   });
+  it('Testing for reply:', (done) => {
+    server.inject('/', (response) => {
+      expect(response.result).toBe('Working!');
+      done();
+    });
+  });
 });
