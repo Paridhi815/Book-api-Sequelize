@@ -11,4 +11,14 @@ describe('Testing The server:', () => {
       done();
     });
   });
+  it('Testing for invalid path:', (done) => {
+    const options = {
+      method: 'GET',
+      url: 'localhost:8000/hello',
+    };
+    server.inject(options, (response) => {
+      expect(response.statusCode).toBe(404);
+      done();
+    });
+  });
 });
