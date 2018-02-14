@@ -12,4 +12,14 @@ describe('Test server for route GET /ratings: ', () => {
       done();
     });
   });
+  test('Should return statusCode 404: ', (done) => {
+    const options = {
+      url: 'localhost:8000/rating',
+      method: 'GET',
+    };
+    Server.inject(options, (request) => {
+      expect(request.statusCode).toBe(404);
+      done();
+    });
+  });
 });
