@@ -22,7 +22,7 @@ const handler = (request, response) => {
 
       const result = allBooks.books.reduce((accumulator, currentValue) => {
         const acc = accumulator;
-        acc[currentValue.Author] = acc[currentValue.Author] || []; // /////ask abhinav
+        acc[currentValue.Author] = acc[currentValue.Author] || [];
         acc[currentValue.Author].push(currentValue);
         return acc;
       }, Object.create(null));
