@@ -24,13 +24,32 @@ const handler = (request, response) => {
         name: book.Name,
         rating: book.rating,
       }));
-      Models.books.bulkCreate(allBooksWithRatings);
+      console.log(allBooksWithRatings);
+      Models.books.destroy({ truncate: true });
+      // Models.books.create({
+      //   author: allBooksWithRatings[0].author,
+      //   bookid: allBooksWithRatings[0].bookid,
+      //   name: allBooksWithRatings[0].name,
+      //   rating: allBooksWithRatings[0].rating,
+      // }).then(() => {
+      //   Models.books.create({
+      //     author: allBooksWithRatings[1].author,
+      //     bookid: allBooksWithRatings[1].bookid,
+      //     name: allBooksWithRatings[1].name,
+      //     rating: allBooksWithRatings[1].rating,
+      //   }).then(() => {
+      //     response('sd').code(201);
+      //   });
+      // });
+      Models.books.bulkCreate(allBooksWithRatings).then(() => {
+        response('Books Added!').code(201);
+      });
     });
   });
 };
 
 const storeBooks = {
-  method: 'GET',
+  method: 'PUT',
   path: '/books',
   handler,
 };
