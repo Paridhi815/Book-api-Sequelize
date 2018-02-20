@@ -42,7 +42,7 @@ const handler = (request, response) => {
       //   });
       // });
       Models.books.bulkCreate(allBooksWithRatings).then(() => {
-        response('Books Added!').code(201);
+        response(allBooksWithRatings).code(201);
       });
     });
   });
